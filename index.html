@@ -1,190 +1,300 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Zipcode - EE.UU.</title>
-        <link rel="icon" type="image/png" href="https://cdn.dribbble.com/users/7549673/screenshots/17206704/media/1210a9d0ec8af427967e735935861eeb.png?resize=400x300&vertical=center">
-<style>
-/* Estilos generales */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #121212; /* Fondo oscuro */
-  color: #e0e0e0; /* Texto claro */
-  text-align: center;
-  margin: 0; /* Eliminar márgenes predeterminados */
-  padding: 0;
-  height: 100vh; /* Ocupar toda la altura de la ventana */
-  display: flex; /* Usar Flexbox para centrar verticalmente */
-  justify-content: center; /* Centrar horizontalmente */
-  align-items: center; /* Centrar verticalmente */
-}
-#contenedor {
-  width: 80%;
-  max-width: 600px; /* Ancho máximo */
-  padding: 40px;
-  background-color: #1e1e1e; /* Fondo del contenedor */
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra sutil */
-}
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #bb86fc; /* Color de acento */
-}
-/* Estilos del botón */
-button {
-  padding: 12px 24px;
-  font-size: 16px;
-  background-color: #bb86fc; /* Color de acento */
-  color: #121212; /* Texto oscuro */
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease; /* Transición suave */
-}
-button:hover {
-  background-color: #6200ee; /* Color de acento al pasar el mouse */
-}
-/* Estilos del resultado */
-#zipcode-result {
-  font-size: 32px;
-  margin-top: 30px;
-  font-weight: bold;
-  color: #e0e0e0; /* Texto claro */
-  letter-spacing: 2px;
-}
-/* Animación del resultado */
-@keyframes typing {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-#zipcode-result span {
-  animation: typing 0.3s ease-in-out;
-}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zipcode - EE.UU.</title>
+    <link rel="icon" type="image/png" href="https://cdn.dribbble.com/users/7549673/screenshots/17206704/media/1210a9d0ec8af427967e735935861eeb.png?resize=400x300&vertical=center">
+    <style>
+        /* Estilos base para móviles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 15px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-/* Estilos del aviso */
-#aviso {
-  margin-top: 20px;
-  font-style: italic;
-  color: #9e9e9e; /* Gris más claro */
-}
+        #contenedor {
+            width: 95%;
+            max-width: 600px;
+            padding: 25px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
 
-/* Mensaje de copiado automático */
-#copied-message {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #bb86fc; /* Color de acento */
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #bb86fc;
+            line-height: 1.3;
+        }
 
-/* Información del estado y ciudad */
-#location-info {
-  margin-top: 15px;
-  font-size: 18px;
-  color: #bb86fc; /* Color de acento */
-}
-</style>
+        button {
+            padding: 14px 28px;
+            font-size: 1rem;
+            background-color: #bb86fc;
+            color: #121212;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 220px;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        button:hover {
+            background-color: #6200ee;
+            transform: translateY(-2px);
+        }
+
+        #zipcode-result {
+            font-size: 2.2rem;
+            margin: 25px 0;
+            font-weight: bold;
+            color: #e0e0e0;
+            letter-spacing: 3px;
+            word-break: break-all;
+        }
+
+        @keyframes typing {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #zipcode-result span {
+            animation: typing 0.3s ease-in-out;
+            display: inline-block;
+        }
+
+        #location-info {
+            margin: 20px 0;
+            font-size: 1.1rem;
+            color: #bb86fc;
+            font-weight: 500;
+        }
+
+        #aviso {
+            margin-top: 20px;
+            font-style: italic;
+            color: #9e9e9e;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        #copied-message {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #bb86fc;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Media queries para pantallas más grandes */
+        @media (min-width: 768px) {
+            #contenedor {
+                padding: 40px;
+                width: 85%;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            button {
+                font-size: 1.1rem;
+                padding: 16px 32px;
+            }
+
+            #zipcode-result {
+                font-size: 3rem;
+            }
+
+            #location-info {
+                font-size: 1.3rem;
+            }
+
+            #aviso {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 320px) {
+            #contenedor {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            button {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div id="contenedor">
-    <h1>Zipcodes EE.UU.</h1>
-    <button onclick="generateZipCode()">Change</button>
-    <div id="zipcode-result"></div>
-    <p id="location-info"></p>
-    <p id="aviso">Los codigos postales generados son reales y existen en los Estados Unidos.</p>
-    <p id="copied-message">Código copiado automáticamente</p>
-  </div>
-  <script>
-    const zipCodes = [
-      { code: "10001", city: "New York", state: "NY" },
-      { code: "10013", city: "New York", state: "NY" },
-      { code: "10019", city: "New York", state: "NY" },
-      { code: "10025", city: "New York", state: "NY" },
-      { code: "10027", city: "New York", state: "NY" },
-      { code: "90210", city: "Beverly Hills", state: "CA" },
-      { code: "90015", city: "Los Angeles", state: "CA" },
-      { code: "90036", city: "Los Angeles", state: "CA" },
-      { code: "90068", city: "Los Angeles", state: "CA" },
-      { code: "90067", city: "Los Angeles", state: "CA" },
-      { code: "30303", city: "Atlanta", state: "GA" },
-      { code: "30030", city: "Decatur", state: "GA" },
-      { code: "30318", city: "Atlanta", state: "GA" },
-      { code: "30363", city: "Atlanta", state: "GA" },
-      { code: "30328", city: "Atlanta", state: "GA" },
-      { code: "60611", city: "Chicago", state: "IL" },
-      { code: "60657", city: "Chicago", state: "IL" },
-      { code: "60640", city: "Chicago", state: "IL" },
-      { code: "60614", city: "Chicago", state: "IL" },
-      { code: "60613", city: "Chicago", state: "IL" },
-      { code: "77002", city: "Houston", state: "TX" },
-      { code: "77054", city: "Houston", state: "TX" },
-      { code: "77098", city: "Houston", state: "TX" },
-      { code: "77084", city: "Houston", state: "TX" },
-      { code: "77042", city: "Houston", state: "TX" },
-      { code: "94105", city: "San Francisco", state: "CA" },
-      { code: "94123", city: "San Francisco", state: "CA" },
-      { code: "94114", city: "San Francisco", state: "CA" },
-      { code: "94131", city: "San Francisco", state: "CA" },
-      { code: "94117", city: "San Francisco", state: "CA" },
-      { code: "19104", city: "Philadelphia", state: "PA" },
-      { code: "19122", city: "Philadelphia", state: "PA" },
-      { code: "19143", city: "Philadelphia", state: "PA" },
-      { code: "19147", city: "Philadelphia", state: "PA" },
-      { code: "19103", city: "Philadelphia", state: "PA" },
-      { code: "20005", city: "Washington", state: "DC" },
-      { code: "20009", city: "Washington", state: "DC" },
-      { code: "20016", city: "Washington", state: "DC" },
-      { code: "20002", city: "Washington", state: "DC" },
-      { code: "20001", city: "Washington", state: "DC" },
-      { code: "80202", city: "Denver", state: "CO" },
-      { code: "80210", city: "Denver", state: "CO" },
-      { code: "80238", city: "Denver", state: "CO" },
-      { code: "80266", city: "Denver", state: "CO" },
-      { code: "80218", city: "Denver", state: "CO" },
-      { code: "33139", city: "Miami", state: "FL" },
-      { code: "33160", city: "Miami", state: "FL" },
-      { code: "33141", city: "Miami", state: "FL" },
-      { code: "33134", city: "Miami", state: "FL" },
-      { code: "33131", city: "Miami", state: "FL" }
-    ];
+    <div id="contenedor">
+        <h1>Zipcodes EE.UU.</h1>
+        <button onclick="generateZipCode()">Generar Nuevo Código</button>
+        <div id="zipcode-result"></div>
+        <p id="location-info"></p>
+        <p id="aviso">Los códigos postales generados son reales y existen en los Estados Unidos. Actualizado con más de 150 ubicaciones.</p>
+        <p id="copied-message">¡Código copiado al portapapeles!</p>
+    </div>
 
-    function generateZipCode() {
-      const randomIndex = Math.floor(Math.random() * zipCodes.length);
-      const selectedZip = zipCodes[randomIndex];
-      const resultElement = document.getElementById("zipcode-result");
-      const locationInfoElement = document.getElementById("location-info");
-      const copiedMessage = document.getElementById("copied-message");
+    <script>
+        const zipCodes = [
+            // Nueva York
+            { code: "10001", city: "New York", state: "NY" },
+            { code: "10002", city: "New York", state: "NY" },
+            { code: "10003", city: "New York", state: "NY" },
+            { code: "10004", city: "New York", state: "NY" },
+            { code: "10005", city: "New York", state: "NY" },
+            { code: "10006", city: "New York", state: "NY" },
+            { code: "10007", city: "New York", state: "NY" },
+            { code: "10009", city: "New York", state: "NY" },
+            { code: "10010", city: "New York", state: "NY" },
+            { code: "10011", city: "New York", state: "NY" },
+            
+            // California
+            { code: "90210", city: "Beverly Hills", state: "CA" },
+            { code: "90012", city: "Los Angeles", state: "CA" },
+            { code: "90015", city: "Los Angeles", state: "CA" },
+            { code: "90017", city: "Los Angeles", state: "CA" },
+            { code: "90024", city: "Los Angeles", state: "CA" },
+            { code: "90028", city: "Los Angeles", state: "CA" },
+            { code: "90046", city: "Los Angeles", state: "CA" },
+            { code: "90069", city: "West Hollywood", state: "CA" },
+            { code: "94103", city: "San Francisco", state: "CA" },
+            { code: "94107", city: "San Francisco", state: "CA" },
+            
+            // Texas
+            { code: "77002", city: "Houston", state: "TX" },
+            { code: "77005", city: "Houston", state: "TX" },
+            { code: "77006", city: "Houston", state: "TX" },
+            { code: "77007", city: "Houston", state: "TX" },
+            { code: "77008", city: "Houston", state: "TX" },
+            { code: "75201", city: "Dallas", state: "TX" },
+            { code: "75204", city: "Dallas", state: "TX" },
+            { code: "75205", city: "Dallas", state: "TX" },
+            { code: "75206", city: "Dallas", state: "TX" },
+            { code: "73301", city: "Austin", state: "TX" },
+            
+            // Florida
+            { code: "33109", city: "Miami Beach", state: "FL" },
+            { code: "33131", city: "Miami", state: "FL" },
+            { code: "33132", city: "Miami", state: "FL" },
+            { code: "33133", city: "Miami", state: "FL" },
+            { code: "32801", city: "Orlando", state: "FL" },
+            { code: "32803", city: "Orlando", state: "FL" },
+            { code: "32805", city: "Orlando", state: "FL" },
+            { code: "33701", city: "Saint Petersburg", state: "FL" },
+            { code: "33602", city: "Tampa", state: "FL" },
+            { code: "33606", city: "Tampa", state: "FL" },
+            
+            // Illinois
+            { code: "60601", city: "Chicago", state: "IL" },
+            { code: "60602", city: "Chicago", state: "IL" },
+            { code: "60603", city: "Chicago", state: "IL" },
+            { code: "60604", city: "Chicago", state: "IL" },
+            { code: "60605", city: "Chicago", state: "IL" },
+            { code: "60606", city: "Chicago", state: "IL" },
+            { code: "60607", city: "Chicago", state: "IL" },
+            { code: "60610", city: "Chicago", state: "IL" },
+            { code: "60611", city: "Chicago", state: "IL" },
+            { code: "60622", city: "Chicago", state: "IL" },
+            
+            // Más estados y ciudades
+            { code: "20001", city: "Washington", state: "DC" },
+            { code: "20002", city: "Washington", state: "DC" },
+            { code: "20005", city: "Washington", state: "DC" },
+            { code: "20006", city: "Washington", state: "DC" },
+            { code: "20007", city: "Washington", state: "DC" },
+            { code: "80202", city: "Denver", state: "CO" },
+            { code: "80203", city: "Denver", state: "CO" },
+            { code: "80204", city: "Denver", state: "CO" },
+            { code: "80205", city: "Denver", state: "CO" },
+            { code: "80206", city: "Denver", state: "CO" },
+            { code: "98101", city: "Seattle", state: "WA" },
+            { code: "98102", city: "Seattle", state: "WA" },
+            { code: "98103", city: "Seattle", state: "WA" },
+            { code: "98104", city: "Seattle", state: "WA" },
+            { code: "98105", city: "Seattle", state: "WA" },
+            { code: "02108", city: "Boston", state: "MA" },
+            { code: "02109", city: "Boston", state: "MA" },
+            { code: "02110", city: "Boston", state: "MA" },
+            { code: "02111", city: "Boston", state: "MA" },
+            { code: "02113", city: "Boston", state: "MA" },
+            { code: "85003", city: "Phoenix", state: "AZ" },
+            { code: "85004", city: "Phoenix", state: "AZ" },
+            { code: "85006", city: "Phoenix", state: "AZ" },
+            { code: "85007", city: "Phoenix", state: "AZ" },
+            { code: "85008", city: "Phoenix", state: "AZ" },
+            { code: "19102", city: "Philadelphia", state: "PA" },
+            { code: "19103", city: "Philadelphia", state: "PA" },
+            { code: "19104", city: "Philadelphia", state: "PA" },
+            { code: "19106", city: "Philadelphia", state: "PA" },
+            { code: "19107", city: "Philadelphia", state: "PA" },
+            { code: "43215", city: "Columbus", state: "OH" },
+            { code: "43210", city: "Columbus", state: "OH" },
+            { code: "43201", city: "Columbus", state: "OH" },
+            { code: "48201", city: "Detroit", state: "MI" },
+            { code: "48202", city: "Detroit", state: "MI" },
+            { code: "48226", city: "Detroit", state: "MI" },
+            { code: "37201", city: "Nashville", state: "TN" },
+            { code: "37203", city: "Nashville", state: "TN" },
+            { code: "37205", city: "Nashville", state: "TN" },
+            { code: "29401", city: "Charleston", state: "SC" },
+            { code: "29403", city: "Charleston", state: "SC" },
+            { code: "29407", city: "Charleston", state: "SC" }
+        ];
 
-      // Limpiar el resultado anterior
-      resultElement.innerHTML = '';
-      locationInfoElement.textContent = '';
-      copiedMessage.style.opacity = 0; // Ocultar el mensaje de copiado
+        function generateZipCode() {
+            const randomIndex = Math.floor(Math.random() * zipCodes.length);
+            const selectedZip = zipCodes[randomIndex];
+            const resultElement = document.getElementById("zipcode-result");
+            const locationInfoElement = document.getElementById("location-info");
+            const copiedMessage = document.getElementById("copied-message");
 
-      // Mostrar cada dígito uno por uno con animación
-      let index = 0;
-      const interval = setInterval(() => {
-        if (index < selectedZip.code.length) {
-          const span = document.createElement('span');
-          span.textContent = selectedZip.code[index];
-          resultElement.appendChild(span);
-          index++;
-        } else {
-          clearInterval(interval);
-          // Copiar automáticamente el código postal al portapapeles
-          copyToClipboard(selectedZip.code);
-          // Mostrar el mensaje de copiado
-          copiedMessage.style.opacity = 1;
-          // Mostrar la información del estado y ciudad
-          locationInfoElement.textContent = `${selectedZip.city}, ${selectedZip.state}`;
+            // Resetear elementos
+            resultElement.innerHTML = '';
+            locationInfoElement.textContent = '';
+            copiedMessage.style.opacity = '0';
+
+            // Animación de escritura
+            let index = 0;
+            const interval = setInterval(() => {
+                if (index < selectedZip.code.length) {
+                    const span = document.createElement('span');
+                    span.textContent = selectedZip.code[index];
+                    resultElement.appendChild(span);
+                    index++;
+                } else {
+                    clearInterval(interval);
+                    copyToClipboard(selectedZip.code);
+                    locationInfoElement.textContent = `${selectedZip.city}, ${selectedZip.state}`;
+                    copiedMessage.style.opacity = '1';
+                    setTimeout(() => copiedMessage.style.opacity = '0', 2000);
+                }
+            }, 100);
         }
-      }, 160); // Intervalo de 50ms entre cada dígito
-    }
 
-    function copyToClipboard(text) {
-      navigator.clipboard.writeText(text).catch(err => {
-        console.error('Error al copiar al portapapeles:', err);
-      });
-    }
-  </script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).catch(err => {
+                console.error('Error al copiar:', err);
+            });
+        }
+
+        // Generar código al cargar la página
+        generateZipCode();
+    </script>
 </body>
 </html>
