@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Zipcode - EE.UU.</title>
-    <link rel="icon" type="image/png" href="https://cdn.dribbble.com/users/7549673/screenshots/17206704/media/1210a9d0ec8af427967e735935861eeb.png?resize=400x300&vertical=center">
+        <link rel="icon" type="image/png" href="https://cdn.dribbble.com/users/7549673/screenshots/17206704/media/1210a9d0ec8af427967e735935861eeb.png?resize=400x300&vertical=center">
 <style>
 /* Estilos generales */
 body {
@@ -76,6 +76,13 @@ button:hover {
   opacity: 0;
   transition: opacity 0.5s ease;
 }
+
+/* Información del estado y ciudad */
+#location-info {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #bb86fc; /* Color de acento */
+}
 </style>
 </head>
 <body>
@@ -83,44 +90,94 @@ button:hover {
     <h1>Zipcodes EE.UU.</h1>
     <button onclick="generateZipCode()">Change</button>
     <div id="zipcode-result"></div>
+    <p id="location-info"></p>
     <p id="aviso">Los codigos postales generados son reales y existen en los Estados Unidos.</p>
     <p id="copied-message">Código copiado automáticamente</p>
   </div>
   <script>
     const zipCodes = [
-      "10001", "90210", "30303", "60611", "77002", "94105", "19104", "20005", "80202", "33139",
-      "10013", "90015", "30030", "60657", "77054", "94123", "19122", "20009", "80210", "33160",
-      "10019", "90036", "30318", "60640", "77098", "94114", "19143", "20016", "80238", "33141",
-      "10025", "90068", "30363", "60614", "77084", "94131", "19147", "20002", "80266", "33134",
-      "10027", "90067", "30328", "60613", "77042", "94117", "19103", "20001", "80218", "33131"
+      { code: "10001", city: "New York", state: "NY" },
+      { code: "10013", city: "New York", state: "NY" },
+      { code: "10019", city: "New York", state: "NY" },
+      { code: "10025", city: "New York", state: "NY" },
+      { code: "10027", city: "New York", state: "NY" },
+      { code: "90210", city: "Beverly Hills", state: "CA" },
+      { code: "90015", city: "Los Angeles", state: "CA" },
+      { code: "90036", city: "Los Angeles", state: "CA" },
+      { code: "90068", city: "Los Angeles", state: "CA" },
+      { code: "90067", city: "Los Angeles", state: "CA" },
+      { code: "30303", city: "Atlanta", state: "GA" },
+      { code: "30030", city: "Decatur", state: "GA" },
+      { code: "30318", city: "Atlanta", state: "GA" },
+      { code: "30363", city: "Atlanta", state: "GA" },
+      { code: "30328", city: "Atlanta", state: "GA" },
+      { code: "60611", city: "Chicago", state: "IL" },
+      { code: "60657", city: "Chicago", state: "IL" },
+      { code: "60640", city: "Chicago", state: "IL" },
+      { code: "60614", city: "Chicago", state: "IL" },
+      { code: "60613", city: "Chicago", state: "IL" },
+      { code: "77002", city: "Houston", state: "TX" },
+      { code: "77054", city: "Houston", state: "TX" },
+      { code: "77098", city: "Houston", state: "TX" },
+      { code: "77084", city: "Houston", state: "TX" },
+      { code: "77042", city: "Houston", state: "TX" },
+      { code: "94105", city: "San Francisco", state: "CA" },
+      { code: "94123", city: "San Francisco", state: "CA" },
+      { code: "94114", city: "San Francisco", state: "CA" },
+      { code: "94131", city: "San Francisco", state: "CA" },
+      { code: "94117", city: "San Francisco", state: "CA" },
+      { code: "19104", city: "Philadelphia", state: "PA" },
+      { code: "19122", city: "Philadelphia", state: "PA" },
+      { code: "19143", city: "Philadelphia", state: "PA" },
+      { code: "19147", city: "Philadelphia", state: "PA" },
+      { code: "19103", city: "Philadelphia", state: "PA" },
+      { code: "20005", city: "Washington", state: "DC" },
+      { code: "20009", city: "Washington", state: "DC" },
+      { code: "20016", city: "Washington", state: "DC" },
+      { code: "20002", city: "Washington", state: "DC" },
+      { code: "20001", city: "Washington", state: "DC" },
+      { code: "80202", city: "Denver", state: "CO" },
+      { code: "80210", city: "Denver", state: "CO" },
+      { code: "80238", city: "Denver", state: "CO" },
+      { code: "80266", city: "Denver", state: "CO" },
+      { code: "80218", city: "Denver", state: "CO" },
+      { code: "33139", city: "Miami", state: "FL" },
+      { code: "33160", city: "Miami", state: "FL" },
+      { code: "33141", city: "Miami", state: "FL" },
+      { code: "33134", city: "Miami", state: "FL" },
+      { code: "33131", city: "Miami", state: "FL" }
     ];
 
     function generateZipCode() {
       const randomIndex = Math.floor(Math.random() * zipCodes.length);
-      const zipCode = zipCodes[randomIndex];
+      const selectedZip = zipCodes[randomIndex];
       const resultElement = document.getElementById("zipcode-result");
+      const locationInfoElement = document.getElementById("location-info");
       const copiedMessage = document.getElementById("copied-message");
-      
+
       // Limpiar el resultado anterior
       resultElement.innerHTML = '';
+      locationInfoElement.textContent = '';
       copiedMessage.style.opacity = 0; // Ocultar el mensaje de copiado
 
       // Mostrar cada dígito uno por uno con animación
       let index = 0;
       const interval = setInterval(() => {
-        if (index < zipCode.length) {
+        if (index < selectedZip.code.length) {
           const span = document.createElement('span');
-          span.textContent = zipCode[index];
+          span.textContent = selectedZip.code[index];
           resultElement.appendChild(span);
           index++;
         } else {
           clearInterval(interval);
           // Copiar automáticamente el código postal al portapapeles
-          copyToClipboard(zipCode);
+          copyToClipboard(selectedZip.code);
           // Mostrar el mensaje de copiado
           copiedMessage.style.opacity = 1;
+          // Mostrar la información del estado y ciudad
+          locationInfoElement.textContent = `${selectedZip.city}, ${selectedZip.state}`;
         }
-      }, 200); // Intervalo de 200ms entre cada dígito
+      }, 160); // Intervalo de 50ms entre cada dígito
     }
 
     function copyToClipboard(text) {
