@@ -151,122 +151,20 @@
     </div>
 
     <script>
-        const zipCodes = [
-            // Nueva York
-            { code: "10001", city: "New York", state: "NY" },
-            { code: "10002", city: "New York", state: "NY" },
-            { code: "10003", city: "New York", state: "NY" },
-            { code: "10004", city: "New York", state: "NY" },
-            { code: "10005", city: "New York", state: "NY" },
-            { code: "10006", city: "New York", state: "NY" },
-            { code: "10007", city: "New York", state: "NY" },
-            { code: "10009", city: "New York", state: "NY" },
-            { code: "10010", city: "New York", state: "NY" },
-            { code: "10011", city: "New York", state: "NY" },
-            
-            // California
-            { code: "90210", city: "Beverly Hills", state: "CA" },
-            { code: "90012", city: "Los Angeles", state: "CA" },
-            { code: "90015", city: "Los Angeles", state: "CA" },
-            { code: "90017", city: "Los Angeles", state: "CA" },
-            { code: "90024", city: "Los Angeles", state: "CA" },
-            { code: "90028", city: "Los Angeles", state: "CA" },
-            { code: "90046", city: "Los Angeles", state: "CA" },
-            { code: "90069", city: "West Hollywood", state: "CA" },
-            { code: "94103", city: "San Francisco", state: "CA" },
-            { code: "94107", city: "San Francisco", state: "CA" },
-            
-            // Texas
-            { code: "77002", city: "Houston", state: "TX" },
-            { code: "77005", city: "Houston", state: "TX" },
-            { code: "77006", city: "Houston", state: "TX" },
-            { code: "77007", city: "Houston", state: "TX" },
-            { code: "77008", city: "Houston", state: "TX" },
-            { code: "75201", city: "Dallas", state: "TX" },
-            { code: "75204", city: "Dallas", state: "TX" },
-            { code: "75205", city: "Dallas", state: "TX" },
-            { code: "75206", city: "Dallas", state: "TX" },
-            { code: "73301", city: "Austin", state: "TX" },
-            
-            // Florida
-            { code: "33109", city: "Miami Beach", state: "FL" },
-            { code: "33131", city: "Miami", state: "FL" },
-            { code: "33132", city: "Miami", state: "FL" },
-            { code: "33133", city: "Miami", state: "FL" },
-            { code: "32801", city: "Orlando", state: "FL" },
-            { code: "32803", city: "Orlando", state: "FL" },
-            { code: "32805", city: "Orlando", state: "FL" },
-            { code: "33701", city: "Saint Petersburg", state: "FL" },
-            { code: "33602", city: "Tampa", state: "FL" },
-            { code: "33606", city: "Tampa", state: "FL" },
-            
-            // Illinois
-            { code: "60601", city: "Chicago", state: "IL" },
-            { code: "60602", city: "Chicago", state: "IL" },
-            { code: "60603", city: "Chicago", state: "IL" },
-            { code: "60604", city: "Chicago", state: "IL" },
-            { code: "60605", city: "Chicago", state: "IL" },
-            { code: "60606", city: "Chicago", state: "IL" },
-            { code: "60607", city: "Chicago", state: "IL" },
-            { code: "60610", city: "Chicago", state: "IL" },
-            { code: "60611", city: "Chicago", state: "IL" },
-            { code: "60622", city: "Chicago", state: "IL" },
-            
-            // Más estados y ciudades
-            { code: "20001", city: "Washington", state: "DC" },
-            { code: "20002", city: "Washington", state: "DC" },
-            { code: "20005", city: "Washington", state: "DC" },
-            { code: "20006", city: "Washington", state: "DC" },
-            { code: "20007", city: "Washington", state: "DC" },
-            { code: "80202", city: "Denver", state: "CO" },
-            { code: "80203", city: "Denver", state: "CO" },
-            { code: "80204", city: "Denver", state: "CO" },
-            { code: "80205", city: "Denver", state: "CO" },
-            { code: "80206", city: "Denver", state: "CO" },
-            { code: "98101", city: "Seattle", state: "WA" },
-            { code: "98102", city: "Seattle", state: "WA" },
-            { code: "98103", city: "Seattle", state: "WA" },
-            { code: "98104", city: "Seattle", state: "WA" },
-            { code: "98105", city: "Seattle", state: "WA" },
-            { code: "02108", city: "Boston", state: "MA" },
-            { code: "02109", city: "Boston", state: "MA" },
-            { code: "02110", city: "Boston", state: "MA" },
-            { code: "02111", city: "Boston", state: "MA" },
-            { code: "02113", city: "Boston", state: "MA" },
-            { code: "85003", city: "Phoenix", state: "AZ" },
-            { code: "85004", city: "Phoenix", state: "AZ" },
-            { code: "85006", city: "Phoenix", state: "AZ" },
-            { code: "85007", city: "Phoenix", state: "AZ" },
-            { code: "85008", city: "Phoenix", state: "AZ" },
-            { code: "19102", city: "Philadelphia", state: "PA" },
-            { code: "19103", city: "Philadelphia", state: "PA" },
-            { code: "19104", city: "Philadelphia", state: "PA" },
-            { code: "19106", city: "Philadelphia", state: "PA" },
-            { code: "19107", city: "Philadelphia", state: "PA" },
-            { code: "43215", city: "Columbus", state: "OH" },
-            { code: "43210", city: "Columbus", state: "OH" },
-            { code: "43201", city: "Columbus", state: "OH" },
-            { code: "48201", city: "Detroit", state: "MI" },
-            { code: "48202", city: "Detroit", state: "MI" },
-            { code: "48226", city: "Detroit", state: "MI" },
-            { code: "37201", city: "Nashville", state: "TN" },
-            { code: "37203", city: "Nashville", state: "TN" },
-            { code: "37205", city: "Nashville", state: "TN" },
-            { code: "29401", city: "Charleston", state: "SC" },
-            { code: "29403", city: "Charleston", state: "SC" },
-            { code: "29407", city: "Charleston", state: "SC" }
-        ];
         
         
-        
-    
-     
-      
-       
-        
-         
-[
-    // Nueva York (Continuación)
+const zipCodes = [
+    // Nueva York
+    { code: "10001", city: "New York", state: "NY" },
+    { code: "10002", city: "New York", state: "NY" },
+    { code: "10003", city: "New York", state: "NY" },
+    { code: "10004", city: "New York", state: "NY" },
+    { code: "10005", city: "New York", state: "NY" },
+    { code: "10006", city: "New York", state: "NY" },
+    { code: "10007", city: "New York", state: "NY" },
+    { code: "10009", city: "New York", state: "NY" },
+    { code: "10010", city: "New York", state: "NY" },
+    { code: "10011", city: "New York", state: "NY" },
     { code: "10012", city: "New York", state: "NY" },
     { code: "10013", city: "New York", state: "NY" },
     { code: "10014", city: "New York", state: "NY" },
@@ -278,7 +176,17 @@
     { code: "10022", city: "New York", state: "NY" },
     { code: "10023", city: "New York", state: "NY" },
 
-    // California (Más ciudades)
+    // California
+    { code: "90210", city: "Beverly Hills", state: "CA" },
+    { code: "90012", city: "Los Angeles", state: "CA" },
+    { code: "90015", city: "Los Angeles", state: "CA" },
+    { code: "90017", city: "Los Angeles", state: "CA" },
+    { code: "90024", city: "Los Angeles", state: "CA" },
+    { code: "90028", city: "Los Angeles", state: "CA" },
+    { code: "90046", city: "Los Angeles", state: "CA" },
+    { code: "90069", city: "West Hollywood", state: "CA" },
+    { code: "94103", city: "San Francisco", state: "CA" },
+    { code: "94107", city: "San Francisco", state: "CA" },
     { code: "92037", city: "San Diego", state: "CA" },
     { code: "92101", city: "San Diego", state: "CA" },
     { code: "92103", city: "San Diego", state: "CA" },
@@ -289,8 +197,21 @@
     { code: "95816", city: "Sacramento", state: "CA" },
     { code: "95818", city: "Sacramento", state: "CA" },
     { code: "95050", city: "San Jose", state: "CA" },
+    { code: "92648", city: "Huntington Beach", state: "CA" },
+    { code: "93940", city: "Monterey", state: "CA" },
+    { code: "94558", city: "Napa", state: "CA" },
 
-    // Texas (Expansión)
+    // Texas
+    { code: "77002", city: "Houston", state: "TX" },
+    { code: "77005", city: "Houston", state: "TX" },
+    { code: "77006", city: "Houston", state: "TX" },
+    { code: "77007", city: "Houston", state: "TX" },
+    { code: "77008", city: "Houston", state: "TX" },
+    { code: "75201", city: "Dallas", state: "TX" },
+    { code: "75204", city: "Dallas", state: "TX" },
+    { code: "75205", city: "Dallas", state: "TX" },
+    { code: "75206", city: "Dallas", state: "TX" },
+    { code: "73301", city: "Austin", state: "TX" },
     { code: "77009", city: "Houston", state: "TX" },
     { code: "77010", city: "Houston", state: "TX" },
     { code: "77019", city: "Houston", state: "TX" },
@@ -302,7 +223,17 @@
     { code: "78703", city: "Austin", state: "TX" },
     { code: "78205", city: "San Antonio", state: "TX" },
 
-    // Florida (Más ciudades)
+    // Florida
+    { code: "33109", city: "Miami Beach", state: "FL" },
+    { code: "33131", city: "Miami", state: "FL" },
+    { code: "33132", city: "Miami", state: "FL" },
+    { code: "33133", city: "Miami", state: "FL" },
+    { code: "32801", city: "Orlando", state: "FL" },
+    { code: "32803", city: "Orlando", state: "FL" },
+    { code: "32805", city: "Orlando", state: "FL" },
+    { code: "33701", city: "Saint Petersburg", state: "FL" },
+    { code: "33602", city: "Tampa", state: "FL" },
+    { code: "33606", city: "Tampa", state: "FL" },
     { code: "33134", city: "Miami", state: "FL" },
     { code: "33135", city: "Miami", state: "FL" },
     { code: "32806", city: "Orlando", state: "FL" },
@@ -313,30 +244,92 @@
     { code: "32204", city: "Jacksonville", state: "FL" },
     { code: "32301", city: "Tallahassee", state: "FL" },
     { code: "32303", city: "Tallahassee", state: "FL" },
+    { code: "32547", city: "Destin", state: "FL" },
+    { code: "34102", city: "Naples", state: "FL" },
 
-    // Illinois (Más ciudades)
+    // Illinois
+    { code: "60601", city: "Chicago", state: "IL" },
+    { code: "60602", city: "Chicago", state: "IL" },
+    { code: "60603", city: "Chicago", state: "IL" },
+    { code: "60604", city: "Chicago", state: "IL" },
+    { code: "60605", city: "Chicago", state: "IL" },
+    { code: "60606", city: "Chicago", state: "IL" },
+    { code: "60607", city: "Chicago", state: "IL" },
+    { code: "60610", city: "Chicago", state: "IL" },
+    { code: "60611", city: "Chicago", state: "IL" },
+    { code: "60622", city: "Chicago", state: "IL" },
     { code: "60612", city: "Chicago", state: "IL" },
     { code: "60613", city: "Chicago", state: "IL" },
     { code: "60614", city: "Chicago", state: "IL" },
     { code: "60618", city: "Chicago", state: "IL" },
-    { code: "60622", city: "Chicago", state: "IL" },
     { code: "60640", city: "Chicago", state: "IL" },
     { code: "60647", city: "Chicago", state: "IL" },
     { code: "60657", city: "Chicago", state: "IL" },
     { code: "62701", city: "Springfield", state: "IL" },
     { code: "62702", city: "Springfield", state: "IL" },
+    { code: "61820", city: "Champaign", state: "IL" },
+    { code: "62901", city: "Carbondale", state: "IL" },
 
-    // Georgia
-    { code: "30301", city: "Atlanta", state: "GA" },
-    { code: "30303", city: "Atlanta", state: "GA" },
-    { code: "30305", city: "Atlanta", state: "GA" },
-    { code: "30307", city: "Atlanta", state: "GA" },
-    { code: "30309", city: "Atlanta", state: "GA" },
-    { code: "31401", city: "Savannah", state: "GA" },
-    { code: "30901", city: "Augusta", state: "GA" },
-    { code: "31201", city: "Macon", state: "GA" },
+    // Más estados y ciudades
+    // Washington DC
+    { code: "20001", city: "Washington", state: "DC" },
+    { code: "20002", city: "Washington", state: "DC" },
+    { code: "20005", city: "Washington", state: "DC" },
+    { code: "20006", city: "Washington", state: "DC" },
+    { code: "20007", city: "Washington", state: "DC" },
+
+    // Colorado
+    { code: "80202", city: "Denver", state: "CO" },
+    { code: "80203", city: "Denver", state: "CO" },
+    { code: "80204", city: "Denver", state: "CO" },
+    { code: "80205", city: "Denver", state: "CO" },
+    { code: "80206", city: "Denver", state: "CO" },
+    { code: "80525", city: "Fort Collins", state: "CO" },
+    { code: "80903", city: "Colorado Springs", state: "CO" },
+    { code: "81301", city: "Durango", state: "CO" },
+    { code: "81611", city: "Aspen", state: "CO" },
+
+    // Washington
+    { code: "98101", city: "Seattle", state: "WA" },
+    { code: "98102", city: "Seattle", state: "WA" },
+    { code: "98103", city: "Seattle", state: "WA" },
+    { code: "98104", city: "Seattle", state: "WA" },
+    { code: "98105", city: "Seattle", state: "WA" },
+    { code: "98004", city: "Bellevue", state: "WA" },
+    { code: "98033", city: "Kirkland", state: "WA" },
+    { code: "98052", city: "Redmond", state: "WA" },
+    { code: "99201", city: "Spokane", state: "WA" },
+
+    // Massachusetts
+    { code: "02108", city: "Boston", state: "MA" },
+    { code: "02109", city: "Boston", state: "MA" },
+    { code: "02110", city: "Boston", state: "MA" },
+    { code: "02111", city: "Boston", state: "MA" },
+    { code: "02113", city: "Boston", state: "MA" },
+    { code: "01602", city: "Worcester", state: "MA" },
+    { code: "01851", city: "Lowell", state: "MA" },
+    { code: "01060", city: "Springfield", state: "MA" },
+    { code: "02301", city: "Brockton", state: "MA" },
+    { code: "02720", city: "Fall River", state: "MA" },
+
+    // Arizona
+    { code: "85003", city: "Phoenix", state: "AZ" },
+    { code: "85004", city: "Phoenix", state: "AZ" },
+    { code: "85006", city: "Phoenix", state: "AZ" },
+    { code: "85007", city: "Phoenix", state: "AZ" },
+    { code: "85008", city: "Phoenix", state: "AZ" },
+    { code: "85251", city: "Scottsdale", state: "AZ" },
+    { code: "85701", city: "Tucson", state: "AZ" },
+    { code: "86301", city: "Prescott", state: "AZ" },
+    { code: "86001", city: "Flagstaff", state: "AZ" },
+    { code: "85364", city: "Yuma", state: "AZ" },
 
     // Pennsylvania
+    { code: "19102", city: "Philadelphia", state: "PA" },
+    { code: "19103", city: "Philadelphia", state: "PA" },
+    { code: "19104", city: "Philadelphia", state: "PA" },
+    { code: "19106", city: "Philadelphia", state: "PA" },
+    { code: "19107", city: "Philadelphia", state: "PA" },
     { code: "15201", city: "Pittsburgh", state: "PA" },
     { code: "15206", city: "Pittsburgh", state: "PA" },
     { code: "15212", city: "Pittsburgh", state: "PA" },
@@ -345,688 +338,135 @@
     { code: "17101", city: "Harrisburg", state: "PA" },
 
     // Ohio
+    { code: "43215", city: "Columbus", state: "OH" },
+    { code: "43210", city: "Columbus", state: "OH" },
+    { code: "43201", city: "Columbus", state: "OH" },
     { code: "44102", city: "Cleveland", state: "OH" },
     { code: "44106", city: "Cleveland", state: "OH" },
     { code: "44113", city: "Cleveland", state: "OH" },
     { code: "45202", city: "Cincinnati", state: "OH" },
     { code: "45206", city: "Cincinnati", state: "OH" },
 
-    // Michigan
-    { code: "48933", city: "Lansing", state: "MI" },
-    { code: "49503", city: "Grand Rapids", state: "MI" },
-    { code: "48205", city: "Detroit", state: "MI" },
 
-    // Carolina del Norte
-    { code: "28202", city: "Charlotte", state: "NC" },
-    { code: "27601", city: "Raleigh", state: "NC" },
-    { code: "27401", city: "Greensboro", state: "NC" },
 
-    // Washington
-    { code: "98004", city: "Bellevue", state: "WA" },
-    { code: "98033", city: "Kirkland", state: "WA" },
-    { code: "98052", city: "Redmond", state: "WA" },
-    { code: "99201", city: "Spokane", state: "WA" },
 
-    // Massachusetts
-    { code: "01602", city: "Worcester", state: "MA" },
-    { code: "01851", city: "Lowell", state: "MA" },
-    { code: "01060", city: "Springfield", state: "MA" },
 
-    // Arizona
-    { code: "85251", city: "Scottsdale", state: "AZ" },
-    { code: "85701", city: "Tucson", state: "AZ" },
-    { code: "86301", city: "Prescott", state: "AZ" },
 
-    // Nevada
-    { code: "89101", city: "Las Vegas", state: "NV" },
-    { code: "89501", city: "Reno", state: "NV" },
-    { code: "89431", city: "Sparks", state: "NV" },
 
-    // Oregon
-    { code: "97201", city: "Portland", state: "OR" },
-    { code: "97301", city: "Salem", state: "OR" },
-    { code: "97401", city: "Eugene", state: "OR" },
 
-    // Tennessee
-    { code: "37902", city: "Knoxville", state: "TN" },
-    { code: "37402", city: "Chattanooga", state: "TN" },
-
-    // Missouri
-    { code: "63101", city: "Saint Louis", state: "MO" },
-    { code: "64101", city: "Kansas City", state: "MO" },
-    { code: "65802", city: "Springfield", state: "MO" },
-
-    // Wisconsin
-    { code: "53202", city: "Milwaukee", state: "WI" },
-    { code: "53703", city: "Madison", state: "WI" },
-
-    // Minnesota
-    { code: "55401", city: "Minneapolis", state: "MN" },
-    { code: "55102", city: "Saint Paul", state: "MN" },
-
-    // Colorado
-    { code: "80525", city: "Fort Collins", state: "CO" },
-    { code: "80903", city: "Colorado Springs", state: "CO" },
-
-    // Louisiana
-    { code: "70112", city: "New Orleans", state: "LA" },
-    { code: "70801", city: "Baton Rouge", state: "LA" },
-
-    // Alabama
-    { code: "35203", city: "Birmingham", state: "AL" },
-    { code: "36104", city: "Montgomery", state: "AL" },
-
-    // Kentucky
-    { code: "40202", city: "Louisville", state: "KY" },
-    { code: "40502", city: "Lexington", state: "KY" },
-
-    // Oklahoma
-    { code: "73102", city: "Oklahoma City", state: "OK" },
-    { code: "74103", city: "Tulsa", state: "OK" },
-
-    // Utah
-    { code: "84101", city: "Salt Lake City", state: "UT" },
-    { code: "84601", city: "Provo", state: "UT" },
-
-    // Iowa
-    { code: "50309", city: "Des Moines", state: "IA" },
-    { code: "52240", city: "Iowa City", state: "IA" },
-
-    // Arkansas
-    { code: "72201", city: "Little Rock", state: "AR" },
-    { code: "72701", city: "Fayetteville", state: "AR" },
-
-    // Mississippi
-    { code: "39201", city: "Jackson", state: "MS" },
-    { code: "39530", city: "Gulfport", state: "MS" },
-
-    // Kansas
-    { code: "66101", city: "Kansas City", state: "KS" },
-    { code: "67202", city: "Wichita", state: "KS" },
-
-    // Nuevo México
-    { code: "87102", city: "Albuquerque", state: "NM" },
-    { code: "87501", city: "Santa Fe", state: "NM" },
-
-    // Nebraska
-    { code: "68102", city: "Omaha", state: "NE" },
-    { code: "68502", city: "Lincoln", state: "NE" },
-
-    // Virginia
-    { code: "23219", city: "Richmond", state: "VA" },
-    { code: "23451", city: "Virginia Beach", state: "VA" },
-
-    // Maryland
-    { code: "21201", city: "Baltimore", state: "MD" },
-    { code: "21401", city: "Annapolis", state: "MD" },
-
-    // Connecticut
-    { code: "06103", city: "Hartford", state: "CT" },
-    { code: "06510", city: "New Haven", state: "CT" },
-
-    // Nueva Jersey
-    { code: "07102", city: "Newark", state: "NJ" },
-    { code: "07302", city: "Jersey City", state: "NJ" },
-
-    // Delaware
-    { code: "19801", city: "Wilmington", state: "DE" },
-    { code: "19901", city: "Dover", state: "DE" },
-
-    // New Hampshire
-    { code: "03101", city: "Manchester", state: "NH" },
-    { code: "03301", city: "Concord", state: "NH" },
-
-    // Maine
-    { code: "04101", city: "Portland", state: "ME" },
-    { code: "04401", city: "Bangor", state: "ME" },
-
-    // Rhode Island
-    { code: "02903", city: "Providence", state: "RI" },
-    { code: "02840", city: "Newport", state: "RI" },
-
-    // Vermont
-    { code: "05401", city: "Burlington", state: "VT" },
-    { code: "05602", city: "Montpelier", state: "VT" },
-
-    // Alaska
-    { code: "99501", city: "Anchorage", state: "AK" },
-    { code: "99801", city: "Juneau", state: "AK" },
-
-    // Hawaii
-    { code: "96813", city: "Honolulu", state: "HI" },
-    { code: "96732", city: "Kailua", state: "HI" },
-
-    // Wyoming
-    { code: "82001", city: "Cheyenne", state: "WY" },
-    { code: "83001", city: "Jackson", state: "WY" },
-
-    // Montana
-    { code: "59101", city: "Billings", state: "MT" },
-    { code: "59801", city: "Missoula", state: "MT" },
-
-    // Dakota del Norte
-    { code: "58102", city: "Fargo", state: "ND" },
-    { code: "58501", city: "Bismarck", state: "ND" },
-
-    // Dakota del Sur
-    { code: "57103", city: "Sioux Falls", state: "SD" },
-    { code: "57701", city: "Rapid City", state: "SD" },
-
-    // Virginia Occidental
-    { code: "25301", city: "Charleston", state: "WV" },
-    { code: "26505", city: "Morgantown", state: "WV" },
-
-    // Idaho
-    { code: "83702", city: "Boise", state: "ID" },
-    { code: "83401", city: "Idaho Falls", state: "ID" },
-
-    // Territorios
-    { code: "00901", city: "San Juan", state: "PR" },  // Puerto Rico
-    { code: "00802", city: "Charlotte Amalie", state: "VI" },  // Islas Vírgenes
-    { code: "96910", city: "Hagåtña", state: "GU" },  // Guam
-];
-           
-            
-             
-              
-               
-                
-                 
-                  
-                   
-[
-    // Alabama
-    { code: "35401", city: "Tuscaloosa", state: "AL" },
-    { code: "36801", city: "Auburn", state: "AL" },
-
-    // Alaska
-    { code: "99705", city: "Fairbanks", state: "AK" },
-    { code: "99611", city: "Kodiak", state: "AK" },
-
-    // Arizona
-    { code: "86001", city: "Flagstaff", state: "AZ" },
-    { code: "85364", city: "Yuma", state: "AZ" },
-
-    // Arkansas
-    { code: "71901", city: "Hot Springs", state: "AR" },
-    { code: "72401", city: "Jonesboro", state: "AR" },
-
-    // California
-    { code: "92648", city: "Huntington Beach", state: "CA" },
-    { code: "93940", city: "Monterey", state: "CA" },
-    { code: "94558", city: "Napa", state: "CA" },
-
-    // Colorado
-    { code: "81301", city: "Durango", state: "CO" },
-    { code: "81611", city: "Aspen", state: "CO" },
-
-    // Connecticut
-    { code: "06820", city: "Danbury", state: "CT" },
-    { code: "06340", city: "Mystic", state: "CT" },
-
-    // Delaware
-    { code: "19701", city: "New Castle", state: "DE" },
-    { code: "19943", city: "Georgetown", state: "DE" },
-
-    // Florida
-    { code: "32547", city: "Destin", state: "FL" },
-    { code: "34102", city: "Naples", state: "FL" },
-
-    // Georgia
-    { code: "31701", city: "Albany", state: "GA" },
-    { code: "31901", city: "Columbus", state: "GA" },
-
-    // Hawaii
-    { code: "96734", city: "Kaneohe", state: "HI" },
-    { code: "96740", city: "Lihue", state: "HI" },
-
-    // Idaho
-    { code: "83301", city: "Twin Falls", state: "ID" },
-    { code: "83815", city: "Coeur d'Alene", state: "ID" },
-
-    // Illinois
-    { code: "61820", city: "Champaign", state: "IL" },
-    { code: "62901", city: "Carbondale", state: "IL" },
-
-    // Indiana
-    { code: "47708", city: "Evansville", state: "IN" },
-    { code: "46601", city: "South Bend", state: "IN" },
-
-    // Iowa
-    { code: "52803", city: "Davenport", state: "IA" },
-    { code: "50613", city: "Cedar Falls", state: "IA" },
-
-    // Kansas
-    { code: "66044", city: "Lawrence", state: "KS" },
-    { code: "67530", city: "Hutchinson", state: "KS" },
-
-    // Kentucky
-    { code: "42101", city: "Bowling Green", state: "KY" },
-    { code: "40508", city: "Lexington", state: "KY" },
-
-    // Louisiana
-    { code: "70501", city: "Lafayette", state: "LA" },
-    { code: "71101", city: "Shreveport", state: "LA" },
-
-    // Maine
-    { code: "04038", city: "Kennebunkport", state: "ME" },
-    { code: "04901", city: "Waterville", state: "ME" },
-
-    // Maryland
-    { code: "21701", city: "Frederick", state: "MD" },
-    { code: "20850", city: "Rockville", state: "MD" },
-
-    // Massachusetts
-    { code: "02301", city: "Brockton", state: "MA" },
-    { code: "02720", city: "Fall River", state: "MA" },
-
-    // Michigan
-    { code: "49001", city: "Kalamazoo", state: "MI" },
-    { code: "48601", city: "Saginaw", state: "MI" },
-
-    // Minnesota
-    { code: "55802", city: "Duluth", state: "MN" },
-    { code: "56301", city: "Saint Cloud", state: "MN" },
-
-    // Mississippi
-    { code: "38655", city: "Oxford", state: "MS" },
-    { code: "39503", city: "Pascagoula", state: "MS" },
-
-    // Missouri
-    { code: "65201", city: "Columbia", state: "MO" },
-    { code: "64801", city: "Joplin", state: "MO" },
-
-    // Montana
-    { code: "59715", city: "Bozeman", state: "MT" },
-    { code: "59901", city: "Kalispell", state: "MT" },
-
-    // Nebraska
-    { code: "68845", city: "Grand Island", state: "NE" },
-    { code: "69337", city: "Scottsbluff", state: "NE" },
-
-    // Nevada
-    { code: "89410", city: "Carson City", state: "NV" },
-    { code: "89011", city: "Henderson", state: "NV" },
-
-    // New Hampshire
-    { code: "03246", city: "Laconia", state: "NH" },
-    { code: "03820", city: "Durham", state: "NH" },
-
-    // New Jersey
-    { code: "07030", city: "Hoboken", state: "NJ" },
-    { code: "07601", city: "Paramus", state: "NJ" },
-
-    // New Mexico
-    { code: "88201", city: "Carlsbad", state: "NM" },
-    { code: "88001", city: "Las Cruces", state: "NM" },
-
-    // Nueva York (ciudades menores)
-    { code: "12207", city: "Albany", state: "NY" },
-    { code: "14604", city: "Rochester", state: "NY" },
-
-    // Carolina del Norte
-    { code: "27834", city: "Greenville", state: "NC" },
-    { code: "28787", city: "Waynesville", state: "NC" },
-
-    // Dakota del Norte
-    { code: "58801", city: "Williston", state: "ND" },
-    { code: "58201", city: "Grand Forks", state: "ND" },
-
-    // Ohio
-    { code: "43085", city: "Westerville", state: "OH" },
-    { code: "45502", city: "Springfield", state: "OH" },
-
-    // Oklahoma
-    { code: "73034", city: "Edmond", state: "OK" },
-    { code: "74403", city: "Muskogee", state: "OK" },
-
-    // Oregón
-    { code: "97504", city: "Ashland", state: "OR" },
-    { code: "97701", city: "Bend", state: "OR" },
-
-    // Pennsylvania
-    { code: "18015", city: "Bethlehem", state: "PA" },
-    { code: "19019", city: "Drexel Hill", state: "PA" },
-
-    // Rhode Island
-    { code: "02882", city: "Warwick", state: "RI" },
-    { code: "02842", city: "Pawtucket", state: "RI" },
-
-    // Carolina del Sur
-    { code: "29201", city: "Columbia", state: "SC" },
-    { code: "29501", city: "Florence", state: "SC" },
-
-    // Dakota del Sur
-    { code: "57401", city: "Aberdeen", state: "SD" },
-    { code: "57006", city: "Brookings", state: "SD" },
-
-    // Tennessee
-    { code: "37601", city: "Johnson City", state: "TN" },
-    { code: "37027", city: "Brentwood", state: "TN" },
-
-    // Texas
-    { code: "79401", city: "Lubbock", state: "TX" },
-    { code: "76107", city: "Fort Worth", state: "TX" },
-    { code: "75336", city: "Dallas", state: "TX" }, // Código único no listado antes
-
-    // Utah
-    { code: "84010", city: "Bountiful", state: "UT" },
-    { code: "84720", city: "Cedar City", state: "UT" },
-
-    // Vermont
-    { code: "05701", city: "Rutland", state: "VT" },
-    { code: "05001", city: "White River Junction", state: "VT" },
-
-    // Virginia
-    { code: "23601", city: "Newport News", state: "VA" },
-    { code: "24011", city: "Roanoke", state: "VA" },
-
-    // Washington
-    { code: "98023", city: "Federal Way", state: "WA" },
-    { code: "98362", city: "Port Angeles", state: "WA" },
-
-    // Virginia Occidental
-    { code: "25701", city: "Huntington", state: "WV" },
-    { code: "26554", city: "Fairmont", state: "WV" },
-
-    // Wisconsin
-    { code: "54301", city: "Green Bay", state: "WI" },
-    { code: "54601", city: "La Crosse", state: "WI" },
-
-    // Wyoming
-    { code: "82901", city: "Rock Springs", state: "WY" },
-    { code: "82009", city: "Cheyenne", state: "WY" }, // Código alternativo
-
-    // Territorios
-    { code: "96950", city: "Saipan", state: "MP" }, // Islas Marianas del Norte
-    { code: "96799", city: "Pago Pago", state: "AS" }, // Samoa Americana
-];
-                     
-                      
-                       
-                         
-        
-[
-    // Ciudad de Nueva York (ZIPs menos conocidos)
-    { code: "10464", city: "City Island", state: "NY" }, // Isla pintoresca en el Bronx
-    { code: "11693", city: "Broad Channel", state: "NY" }, // Única comunidad insular habitada en Jamaica Bay
-    { code: "10307", city: "Tottenville", state: "NY" }, // Pueblo histórico en Staten Island
-    { code: "11208", city: "Cypress Hills", state: "NY" }, // Barrio en Brooklyn con frontera "perdida" entre condados
-    { code: "11370", city: "Rikers Island", state: "NY" }, // Prisión en una isla (no residencial)
-
-    // Estado de Nueva York (pueblos con nombres extraños)
-    { code: "14813", city: "Beaver Dams", state: "NY" }, // Presas de castores
-    { code: "13797", city: "Whitetail", state: "NY" }, // Cola blanca (por los ciervos)
-    { code: "12093", city: "Esperance", state: "NY" }, // "Esperanza" en francés, pueblo de 350 habitantes
-    { code: "12158", city: "Sprakers", state: "NY" }, // Nombre derivado de "Spark's Store"
-    { code: "12464", city: "Pine Hill", state: "NY" }, // Colina de pinos en los Catskills
-    { code: "12788", city: "Yulan", state: "NY" }, // Aldea de 1,000 habitantes junto al río Delaware
-    { code: "13830", city: "Unadilla", state: "NY" }, // Del iroqués "lugar de encuentro"
-    { code: "14867", city: "Painted Post", state: "NY" }, // Referencia a un poste tallado por nativos
-    { code: "13617", city: "Calcium", state: "NY" }, // Nombrado por depósitos de yeso (¡no por el mineral!)
-    { code: "14837", city: "Horseheads", state: "NY" }, // Cabezas de caballo (por cráneos de equinos de 1779)
-    { code: "14432", city: "Dansville", state: "NY" }, // Pueblo con el primer sanatorio de EE.UU.
-    { code: "14445", city: "Honeoye", state: "NY" }, // Del seneca "dedo solitario" (por el lago)
-    { code: "13695", city: "Waddington", state: "NY" }, // Famoso por pesca de muskellunge
-
-    // Zonas rurales y misteriosas
-    { code: "12780", city: "Smallwood", state: "NY" }, // Comunidad hippie en los bosques
-    { code: "12405", city: "Bearsville", state: "NY" }, // Aldea cerca de Woodstock
-    { code: "12785", city: "Woodbourne", state: "NY" }, // Centro de la comunidad hasídica
-    { code: "12456", city: "Mount Tremper", state: "NY" }, // Montaña con leyendas de fantasmas
-    { code: "12834", city: "Hadley", state: "NY" }, // Pueblo con un puente cubierto del siglo XIX
-
-    // Lugares con historia oscura
-    { code: "12489", city: "Wawarsing", state: "NY" }, // Antigua prisión ahora abandonada
-    { code: "12752", city: "Loch Sheldrake", state: "NY" }, // Hotel abandonado "The Pines"
-    { code: "13786", city: "Sidney Center", state: "NY" }, // Escenario de avistamientos OVNI
-
-    // Nombres inusuales
-    { code: "12110", city: "Central Bridge", state: "NY" }, // Puente que ya no existe
-    { code: "12469", city: "Ruby", state: "NY" }, // Menos de 500 habitantes
-    { code: "12496", city: "West Shokan", state: "NY" }, // Pueblo fantasma junto a un embalse
-    { code: "14884", city: "Slaterville Springs", state: "NY" }, // Aguas termales olvidadas
-    { code: "14559", city: "Shortsville", state: "NY" }, // Nombrado por un sastre
-    { code: "14873", city: "Rock Stream", state: "NY" }, // Corriente de rocas (zona vinícola)
+    { code: "00501", city: "Holtsville", state: "NY" },
     
-    // Para aventureros
-    { code: "12943", city: "Keene Valley", state: "NY" }, // Acceso a senderos de High Peaks
-    { code: "12824", city: "Chestertown", state: "NY" }, // Puerta a las Adirondacks salvajes
+    // 2. **El zip code más alto: 99950** (Ketchikan, AK) - Zona remota de Alaska.
+    { code: "99950", city: "Ketchikan", state: "AK" },
+    
+    // 3. **Zip code "12345"** (Schenectady, NY) - Oficinas de General Electric.
+    { code: "12345", city: "Schenectady", state: "NY" },
+    
+    // 4. **Supai, AZ (86435)** - Solo accesible en helicóptero o caminata (hogar de los Havasupai).
+    { code: "86435", city: "Supai", state: "AZ" },
+    
+    // 5. **Adak, AK (99546)** - La ciudad más occidental de EE.UU. (cerca de Rusia).
+    { code: "99546", city: "Adak", state: "AK" },
+    
+    // 6. **Centralia, PA (17927)** - Pueblo fantasma por un incendio subterráneo desde 1962.
+    { code: "17927", city: "Centralia", state: "PA" },
+    
+    // 7. **Mercury, NV (89023)** - Área restringida cerca de **Area 51**.
+    { code: "89023", city: "Mercury", state: "NV" },
+    
+    // 8. **Loving, TX (88267)** - Población de ~100 personas (¡el pueblo más pequeño de Texas!).
+    { code: "88267", city: "Loving", state: "TX" },
+    
+    // 9. **Fishers Island, NY (06390)** - Solo accesible en ferry (parte de NY pero cerca de CT).
+    { code: "06390", city: "Fishers Island", state: "NY" },
+    
+    // 10. **Hyder, AK (99923)** - Único lugar de EE.UU. que usa huso horario de Canadá.
+    { code: "99923", city: "Hyder", state: "AK" },
+    
+    // 11. **French Lick, IN (47432)** - Hogar de Larry Bird; famoso por aguas termales.
+    { code: "47432", city: "French Lick", state: "IN" },
+    
+    // 12. **Truth or Consequences, NM (87901)** - Ciudad que renombró por un programa de radio en 1950.
+    { code: "87901", city: "Truth or Consequences", state: "NM" },
+    
+    // 13. **Boring, OR (97009)** - Hermandad con "Dull" en Escocia.
+    { code: "97009", city: "Boring", state: "OR" },
+    
+    // 14. **Hell, MI (48169)** - Pequeño pueblo que celebra "Halloween" todo el año.
+    { code: "48169", city: "Hell", state: "MI" },
+    
+    // 15. **Intercourse, PA (17534)** - En el corazón de Amish Country.
+    { code: "17534", city: "Intercourse", state: "PA" },
+    
+    // 16. **Zzyzx, CA (92309)** - Antigua estación termal en el desierto de Mojave.
+    { code: "92309", city: "Zzyzx", state: "CA" },
+    
+    // 17. **Pie Town, NM (87827)** - Famosa por sus festivales de pay.
+    { code: "87827", city: "Pie Town", state: "NM" },
+    
+    // 18. **Dinosaur, CO (81610)** - Calles nombradas como "Brontosaurus Blvd".
+    { code: "81610", city: "Dinosaur", state: "CO" },
+    
+    // 19. **Two Egg, FL (32440)** - Pueblo con leyendas locales extrañas.
+    { code: "32440", city: "Two Egg", state: "FL" },
+    
+    // 20. **Whynot, NC (27301)** - La leyenda dice que el nombre surgió de un debate comunitario.
+    { code: "27301", city: "Whynot", state: "NC" },
+    
+    // 21. **Bigfoot, TX (78005)** - Tributo al mítico Pie Grande.
+    { code: "78005", city: "Bigfoot", state: "TX" },
+    
+    // 22. **Chicken, AK (99732)** - Pueblo sin nombre real (lo cambiaron de "Ptarmigan" por error).
+    { code: "99732", city: "Chicken", state: "AK" },
+    
+    // 23. **Embarrass, MN (55732)** - Uno de los lugares más fríos de EE.UU.
+    { code: "55732", city: "Embarrass", state: "MN" },
+    
+    // 24. **Nothing, AZ (85938)** - Pueblo abandonado con letrero: "¡La gente de Nothing, Arizona!". 
+    { code: "85938", city: "Nothing", state: "AZ" },
+    
+    // 25. **Tightwad, MO (64735)** - Tiene un cajero automático en una tienda de anzuelos.
+    { code: "64735", city: "Tightwad", state: "MO" },
+
+
+
+
+
+
+
+
 ];
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-[
-    // Barrios con nombres inusuales
-    { code: "19132", city: "Philadelphia", state: "PA" }, // **Strawberry Mansion**: Nombrado por una villa del siglo XIX con fresas pintadas en su fachada.
-    { code: "19148", city: "Philadelphia", state: "PA" }, // **Pennsport**: Antiguo astillero convertido en zona de clubes sociales irlandeses.
-    { code: "19128", city: "Philadelphia", state: "PA" }, // **Roxborough**: Hogar de "The Necropolis", cementerio oculto en el bosque.
-    { code: "19137", city: "Philadelphia", state: "PA" }, // **Bridesburg**: El barrio más antiguo de Filadelfia (fundado en 1642).
-
-    // Historias oscuras
-    { code: "19130", city: "Philadelphia", state: "PA" }, // **Eastern State Penitentiary**: Prisión abandonada donde Al Capone tuvo una celda "de lujo".
-    { code: "19136", city: "Philadelphia", state: "PA" }, // **Holmesburg**: Famoso por experimentos médicos en prisioneros (1950-1970).
-
-    // Lugares esotéricos
-    { code: "19146", city: "Philadelphia", state: "PA" }, // **Devil's Pocket**: Zona con leyendas de rituales ocultos en el siglo XIX.
-    { code: "19147", city: "Philadelphia", state: "PA" }, // **Magic Gardens**: Barrio con un laberinto subterráneo de mosaicos psicodélicos.
-
-    // Zonas industriales abandonadas
-    { code: "19134", city: "Philadelphia", state: "PA" }, // **Port Richmond**: Fábricas fantasmas junto al río Delaware.
-    { code: "19140", city: "Philadelphia", state: "PA" }, // **Nicetown-Tioga**: Antiguo distrito textil con túneles secretos bajo las calles.
-
-    // Comunidades secretas
-    { code: "19127", city: "Philadelphia", state: "PA" }, // **Manayunk**: Barrio en una colina con escaleras públicas "escondidas" para peatones.
-    { code: "19144", city: "Philadelphia", state: "PA" }, // **Germantown**: Mansiones del siglo XVIII con pasadizos del Ferrocarril Subterráneo.
-
-    // Curiosidades geográficas
-    { code: "19123", city: "Philadelphia", state: "PA" }, // **Northern Liberties**: Único ZIP code con un parque construido sobre una antigua fábrica de cerveza.
-    { code: "19125", city: "Philadelphia", state: "PA" }, // **Fishtown**: Barrio hipster donde una estatua de un pez gigante marca su identidad.
-
-    // Para exploradores urbanos
-    { code: "19133", city: "Philadelphia", state: "PA" }, // **Fairhill**: Conocido como "El Badlands", murales callejeros entre ruinas industriales.
-    { code: "19121", city: "Philadelphia", state: "PA" }, // **Brewerytown**: Antiguas cervecerías reconvertidas en estudios de artistas.
-    { code: "19122", city: "Philadelphia", state: "PA" }, // **Temple University**: Túneles subterráneos conectan edificios (usados durante la Prohibición).
-]
-        
-        
-        
-        
-        
-        
-        
-[
-    // Barrios con nombres intrigantes
-    { code: "33127", city: "Miami", state: "FL" }, // **Little Haiti**: Centro de la diáspora haitiana, murales vudú y música kompa.
-    { code: "33138", city: "Miami", state: "FL" }, // **Lemon City**: Uno de los asentamientos más antiguos de Miami (1882), hoy parte de Little Haiti.
-    { code: "33150", city: "Miami", state: "FL" }, // **Golden Glades**: Cruce de autopistas famoso por laberintos de carreteras y leyendas de tráfico paranormal.
-
-    // Historias oscuras
-    { code: "33136", city: "Miami", state: "FL" }, // **Overtown**: Antiguo "Harlem del Sur", escenario de protestas raciales en los 60 y hoy renacimiento cultural.
-    { code: "33132", city: "Miami", state: "FL" }, // **Civic Center**: Hospitales abandonados y el Museo de la Muerte (con autopsias públicas históricas).
-
-    // Islas y enclaves secretos
-    { code: "33149", city: "Miami", state: "FL" }, // **Virginia Key**: Playa segregada para afroamericanos en los 50, hoy parque con bosques espectrales.
-    { code: "33109", city: "Miami", state: "FL" }, // **Fisher Island**: Isla privada accesible solo en ferry, hogar de millonarios y un cementerio de mascotas lujoso.
-    { code: "33154", city: "Miami", state: "FL" }, // **Biscayne Island**: Comunidad flotante con casas sobre pilotes en la bahía.
-
-    // Zonas abandonadas y misterios
-    { code: "33125", city: "Miami", state: "FL" }, // **Allapattah**: Fábricas abandonadas reconvertidas en galerías de arte clandestinas.
-    { code: "33137", city: "Miami", state: "FL" }, // **Little River**: Antiguo aeropuerto clandestino de la era de la cocaína (1980s).
-    { code: "33142", city: "Miami", state: "FL" }, // **Liberty City**: Torre de control abandonada del viejo aeropuerto de Tamiami.
-
-    // Curiosidades culturales
-    { code: "33145", city: "Miami", state: "FL" }, // **Coral Gables**: La "Ciudad Jardín", con calles inspiradas en Sevilla y fuentes encantadas.
-    { code: "33134", city: "Miami", state: "FL" }, // **Coconut Grove**: Lugar de reunión de la tribu Tequesta y hogar del cementerio esotérico "Charlotte Jane Memorial Park".
-    { code: "33143", city: "Miami", state: "FL" }, // **Silver Bluff**: Mansiones art déco ocultas entre manglares.
-
-    // Para exploradores urbanos
-    { code: "33147", city: "Miami", state: "FL" }, // **Model City**: Ruinas de proyectos de vivienda de los 60, ahora lienzo de grafitis postapocalípticos.
-    { code: "33126", city: "Miami", state: "FL" }, // **Miami Intermodal Center**: Túneles subterráneos olvidados que conectan el aeropuerto con la ciudad.
-    { code: "33155", city: "Miami", state: "FL" }, // **Hialeah**: Parque de bomberos abandonado convertido en santuario de santería.
-]
+            
+                
+                    
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
 
 
-
-
-
-
-
-
-
-[
-    // Barrios con nombres extraños
-    { code: "80205", city: "Denver", state: "CO" }, // **Five Points**: Antiguo "Harlem del Oeste", con clubes de jazz abandonados y murales de fantasmas.
-    { code: "80216", city: "Denver", state: "CO" }, // **Globeville**: Barrio industrial con casas de 1890, contaminado por fundiciones de metales pesados.
-    { code: "80204", city: "Denver", state: "CO" }, // **Sun Valley**: Proyecto de viviendas bajo la sombra del estadio Mile High, apodado "El barrio olvidado".
-    { code: "80211", city: "Denver", state: "CO" }, // **Berkeley**: Hogar de "Casa Bonita", el restaurante kitsch inspirado en Cliffside (de South Park).
-
-    // Lugares abandonados
-    { code: "80223", city: "Denver", state: "CO" }, // **Overland Park**: Fábrica de coches de bomberos abandonada, ahora llena de grafitis apocalípticos.
-    { code: "80239", city: "Denver", state: "CO" }, // **Montbello**: Aeropuerto Stapleton abandonado, convertido en un pueblo fantasma urbano.
-
-    // Misterios urbanos
-    { code: "80249", city: "Denver", state: "CO" }, // **DIA (Aeropuerto)**: Zona de teorías conspirativas (murales proféticos, túneles secretos).
-    { code: "80227", city: "Denver", state: "CO" }, // **Marston Lake**: Lago artificial con leyendas de un monstruo similar al Nessie.
-
-    // Curiosidades históricas
-    { code: "80206", city: "Denver", state: "CO" }, // **Congress Park**: Antiguo cementerio reconvertido en parque (tumbas aún bajo el césped).
-    { code: "80210", city: "Denver", state: "CO" }, // **Cheesman Park**: Otro ex-cementerio, famoso por avistamientos de fantasmas y sesiones espiritistas ilegales.
-]
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-[
-    // Barrios con historias oscuras
-    { code: "48209", city: "Detroit", state: "MI" }, // **Delray**: Zona industrial junto al río, llena de fábricas abandonadas y túneles prohibidos.
-    { code: "48211", city: "Detroit", state: "MI" }, // **Hubbard Farms**: Casas victorianas abandonadas invadidas por la naturaleza (como una selva urbana).
-    { code: "48206", city: "Detroit", state: "MI" }, // **Conant Gardens**: Antiguo barrio afroamericano próspero, ahora lleno de solares vacíos con historias de redlining.
-
-    // Lugares icónicos abandonados
-    { code: "48226", city: "Detroit", state: "MI" }, // **Michigan Central Station**: Estación de trenes abandonada (aparece en *Transformers*), ahora renovada pero con fantasmas reportados.
-    { code: "48208", city: "Detroit", state: "MI" }, // **North End**: Fábrica de Packard abandonada, usada como escenario de películas postapocalípticas.
-    { code: "48214", city: "Detroit", state: "MI" }, // **East Village**: Iglesia abandonada con un órgano gigante cubierto de hiedra.
-
-    // Secretos urbanos
-    { code: "48216", city: "Detroit", state: "MI" }, // **Corktown**: Antiguo barrio irlandés, hogar del "Misterio de la Casa de los Murciélagos" (una mansión infestada).
-    { code: "48202", city: "Detroit", state: "MI" }, // **Brush Park**: Mansiones del siglo XIX en ruinas, conocidas como "Los Castillos de Detroit".
-
-    // Curiosidades
-    { code: "48207", city: "Detroit", state: "MI" }, // **Elmwood Cemetery**: Tumba de la "Dama Blanca", un fantasma que persigue a los visitantes.
-    { code: "48203", city: "Detroit", state: "MI" }, // **West Village**: Antiguo parque de atracciones "Edgewater Park", hundido parcialmente en el río Detroit.
-]
-        
-        
-        
-        
-        
-        
-        
-[
-    { code: "89044", city: "Rachel", state: "NV" }, // Base del Área 51 (Groom Lake)
-        // - Ubicación: A 38 km del Área 51. Único pueblo cercano, famoso por avistamientos OVNI.
-        // - Curiosidad: El código postal cubre la "Extraterrestrial Highway" (Carretera Estatal 375).
-
-    { code: "89049", city: "Tonopah", state: "NV" }, // Tonopah Test Range (TTR)
-        // - Instalación hermana del Área 51, usada para pruebas de aviones furtivos.
-        // - Aquí se probó el F-117 Nighthawk en los 80.
-
-    { code: "89030", city: "Indian Springs", state: "NV" }, // Base Aérea de Creech
-        // - Centro de operaciones de drones militares Predator y Reaper.
-        // - Acceso: Prohibido al público.
-]
-        
-        
-        
-        
-        
-        
-[
-    { code: "87528", city: "Dulce", state: "NM" }, // Cerca de la "Dulce Base" (teoría conspirativa)
-        // - Leyenda: Supuesta base subterránea conjunta de humanos y extraterrestres.
-        // - Realidad: Laboratorios de investigación de energía y ganado (Archuleta Mesa).
-
-    { code: "93524", city: "Edwards", state: "CA" }, // Base Aérea Edwards
-        // - Pruebas de aviones experimentales (como el SR-71 Blackbird y el B-2 Bomber).
-        // - Cerca de la Zona 51 de California (Plant 42 en Palmdale).
-
-    { code: "80913", city: "Colorado Springs", state: "CO" }, // Cheyenne Mountain Complex (NORAD)
-        // - Búnker nuclear dentro de una montaña, diseñado para resistir ataques apocalípticos.
-        // - Aparece en películas como *WarGames* (1983).
-
-    { code: "20755", city: "Fort Meade", state: "MD" }, // NSA (Agencia de Seguridad Nacional)
-        // - Sede de la NSA y criptógrafos militares.
-        // - Leyenda: Alberga supercomputadoras que monitorean todas las comunicaciones.
-
-    { code: "17325", city: "Blue Ridge Summit", state: "PA" }, // Raven Rock Mountain Complex
-        // - Búnker de emergencia del Pentágono, conocido como "Pentágono Subterráneo".
-]
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-[
-    { code: "89445", city: "Stead", state: "NV" }, // Centro de entrenamiento de pilotos de la CIA
-        // - Ubicado en el desierto de Nevada, cerca de Reno.
-
-    { code: "45433", city: "Dayton", state: "OH" }, // Wright-Patterson AFB (Hangar 18)
-        // - Leyenda: Aquí se guardarían restos del "Incidente OVNI de Roswell".
-        // - Realidad: Base de investigación aeroespacial.
-
-    { code: "58324", city: "Cavalier", state: "ND" }, // Base de la Fuerza Espacial en Cavalier
-        // - Radar de alerta temprana contra misiles y amenazas espaciales.
-
-    { code: "24934", city: "Green Bank", state: "WV" }, // Observatorio Green Bank (Zona de Silencio)
-        // - Prohibido usar dispositivos electrónicos (interferencia con radiotelescopios).
-]
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-[
-    { code: "20500", city: "Washington", state: "DC" }, // Casa Blanca
-        // - No es un secreto, pero el código postal oficial del presidente.
-
-    { code: "20301", city: "Washington", state: "DC" }, // El Pentágono
-        // - Dirección postal de la sede del Departamento de Defensa.
-
-    { code: "90210", city: "Beverly Hills", state: "CA" }, // (Ficción)
-        // - Aunque no es secreto, se usó en la serie *The X-Files* como código de acceso a archivos clasificados.
-]
-        
-        
-        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                
+                                        
         
         
         
